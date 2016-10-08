@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    tools:context="jkh.com.example.dmitriyoschepkov.jkh.add">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:onClick="onClickAdd"
+        android:src='@drawable/ic_border_color_white_18dp'
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="16dp" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:id="@+id/scrollView3"
+        android:background="#e3e3e3">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e3e3e3"
+            android:padding="0dp">
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/holo_blue_light"/>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardAddVoda"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                card_view:cardCornerRadius="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Горячая вода"
+                            android:id="@+id/textView29" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Текущее показание"
+                            android:id="@+id/textView30"
+                            android:layout_column="0"
+                            android:clickable="false" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText android:id="@+id/voda_gor_old"
+                            android:layout_column="0"
+                        android:focusable="false"
+                            android:enabled="false"
+
+                            android:inputType="none" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Новое показание"
+                            android:id="@+id/textView31"
+                            android:layout_column="0"
+                            android:layout_marginLeft="5dp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText android:id="@+id/voda_gor_new"
+                            android:layout_column="0"
+                            android:inputType="numberDecimal" />
+
+                    </TableRow>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Холодная вода"
+                            android:id="@+id/textView32"
+                            android:layout_column="0"
+                            android:layout_marginTop="20dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Текущее показание"
+                            android:id="@+id/textView33"
+                            android:layout_column="0"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/voda_hol_old"
+                            android:layout_column="0"
+                            android:focusable="false"
+                            android:enabled="false"
+                            android:inputType="none" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Новое показание"
+                            android:id="@+id/textView34"
+                            android:layout_column="0" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/voda_hol_new"
+                            android:layout_column="0"
+                            android:inputType="numberDecimal" />
+                    </TableRow>
+                </TableLayout>
+
+                </android.support.v7.widget.CardView>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/holo_green_dark"
+                android:clickable="true" />
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardAddSvet"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                card_view:cardCornerRadius="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Свет за ночь"
+                            android:id="@+id/textView290" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Текущее показание"
+                            android:id="@+id/textView300"
+                            android:layout_column="0" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText android:id="@+id/svet_noch_old"
+                            android:focusable="false"
+                            android:enabled="false"
+                            android:layout_column="0"
+                            android:inputType="none" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Новое показание"
+                            android:id="@+id/textView310"
+                            android:layout_column="0"
+                            android:layout_marginLeft="5dp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText android:id="@+id/svet_noch_new"
+                            android:layout_column="0"
+                            android:inputType="numberDecimal" />
+
+                    </TableRow>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Свет за день"
+                            android:id="@+id/textView320"
+                            android:layout_column="0"
+                            android:layout_marginTop="20dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Текущее показание"
+                            android:id="@+id/textView330"
+                            android:layout_column="0" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/svet_den_old"
+                            android:focusable="false"
+                            android:enabled="false"
+                            android:layout_column="0"
+                            android:inputType="none" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Новое показание"
+                            android:id="@+id/textView340"
+                            android:layout_column="0" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/svet_den_new"
+                            android:cursorVisible="false"
+                            android:layout_column="0"
+                            android:inputType="numberDecimal" />
+                    </TableRow>
+                </TableLayout>
+
+            </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+
+</RelativeLayout>

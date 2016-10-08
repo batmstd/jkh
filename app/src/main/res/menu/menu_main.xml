@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="jkh.com.example.dmitriyoschepkov.jkh.MainActivity">
+
+
+    <item
+        android:id="@+id/mail"
+        android:orderInCategory="100"
+        android:title="@string/mail"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_share_white_24dp"/>
+
+
+    <item
+        android:id="@+id/settings"
+        android:orderInCategory="100"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings_white_24dp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/archive2"
+        android:orderInCategory="100"
+        android:title="@string/archive2"
+        app:showAsAction="never" />
+</menu>

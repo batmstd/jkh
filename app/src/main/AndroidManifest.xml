@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jkh.com.example.dmitriyoschepkov.jkh">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:orientation="vertical"
+        android:screenOrientation="landscape"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Main2Activity"
+            android:label="Архив"
+            android:parentActivityName=".Main2Activity" />
+        <activity
+            android:name=".Main3Activity"
+            android:label="Настройки тарифов"
+            android:parentActivityName=".Main3Activity" />
+        <activity
+            android:name=".archive"
+            android:label="Последние 10 записей"
+            android:parentActivityName=".archive" />
+        <activity
+            android:name=".add"
+            android:label="Добавление нового показания"
+            android:parentActivityName=".add" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jkh.com.example.dmitriyoschepkov.jkh.MainActivity" />
+        </activity>
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".Settings"
+            android:label="Настройки"
+            android:parentActivityName=".Settings"
+            ></activity>
+    </application>
+
+</manifest>

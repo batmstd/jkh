@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="jkh.com.example.dmitriyoschepkov.jkh.MainActivity"
+
+
+    android:background="#e3e3e3"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView4"
+        android:layout_alignParentTop="true"
+        android:scrollbars="none"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/holo_blue_dark"/>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardStatVodaGor"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                card_view:cardCornerRadius="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp">
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Горячая вода"
+                    android:id="@+id/textView2"
+                    android:layout_marginBottom="20dp" />
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:adjustViewBounds="true"
+                        android:divider="@drawable/separator"
+                        android:dividerPadding="3dp"
+                        android:orientation="horizontal"
+                        android:showDividers="middle" >
+
+
+                        <TableLayout
+
+                            android:showDividers="middle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:adjustViewBounds="true"
+                            android:divider="@drawable/separator"
+                            android:dividerPadding="3dp"
+                            >
+
+                            <TableRow
+                                android:showDividers="middle"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:adjustViewBounds="true"
+                                android:divider="@drawable/separator"
+                                android:dividerPadding="3dp">
+
+                                <TableLayout
+                                    android:layout_width="72dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp">
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="DD.yyyy"
+                                            android:id="@+id/currentDateGorVoda"
+                                            android:layout_gravity="center_horizontal"
+                                            android:gravity="center" />
+                                    </TableRow>
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="xxxxx"
+                                            android:id="@+id/currentGorVoda"
+                                            android:layout_marginTop="10dp"
+                                            android:gravity="center" />
+                                    </TableRow>
+                                </TableLayout>
+
+                                <TableLayout
+                                    android:layout_width="73dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginLeft="5dp">
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="DD.yyyy"
+                                            android:id="@+id/lastDateGorVoda"
+                                            android:gravity="center" />
+                                    </TableRow>
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="xxxx"
+                                            android:id="@+id/lastGorVoda"
+                                            android:layout_marginTop="10dp"
+                                            android:gravity="center" />
+                                    </TableRow>
+                                </TableLayout>
+
+                                <TableLayout
+                                    android:layout_width="72dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp">
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="Расход"
+                                            android:id="@+id/vodaGor"
+                                            android:gravity="center" />
+                                    </TableRow>
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="xxxx"
+                                            android:id="@+id/resGorVoda"
+                                            android:layout_marginTop="10dp"
+                                            android:gravity="center" />
+                                    </TableRow>
+                                </TableLayout>
+
+                                <TableLayout
+                                    android:layout_width="72dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp">
+
+                                    <TableRow
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="fill_parent">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/imageGor"
+                                            android:src="@drawable/ic_keyboard_arrow_up_red_900_36dp"
+                                            android:layout_column="0"
+                                            android:layout_marginTop="-6dp" />
+                                    </TableRow>
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="2dp">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:text="xxx"
+                                            android:id="@+id/plusGorVoda"
+                                            android:gravity="center" />
+                                    </TableRow>
+                                </TableLayout>
+
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                </TableRow>
+
+            </TableLayout>
+            </android.support.v7.widget.CardView>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/holo_green_dark"/>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardStatVodaHol"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                card_view:cardCornerRadius="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp">
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Холодная вода"
+                        android:id="@+id/textView20"
+                        android:layout_marginBottom="20dp" />
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:adjustViewBounds="true"
+                            android:divider="@drawable/separator"
+                            android:dividerPadding="3dp"
+                            android:orientation="horizontal"
+                            android:showDividers="middle" >
+
+
+                            <TableLayout
+
+                                android:showDividers="middle"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:adjustViewBounds="true"
+                                android:divider="@drawable/separator"
+                                android:dividerPadding="3dp"
+                                >
+
+                                <TableRow
+                                    android:showDividers="middle"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:adjustViewBounds="true"
+                                    android:divider="@drawable/separator"
+                                    android:dividerPadding="3dp">
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/currentDateHolVoda"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxxx"
+                                                android:id="@+id/currentHolVoda"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="73dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/lastDateHolVoda"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxx"
+                                                android:id="@+id/lastHolVoda"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="Расход"
+                                                android:id="@+id/vodaHol"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxx"
+                                                android:id="@+id/resHolVoda"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/imageHol"
+                                                android:src="@drawable/ic_keyboard_arrow_up_red_900_36dp"
+                                                android:layout_column="0"
+                                                android:layout_marginTop="-6dp" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxx"
+                                                android:id="@+id/plusHolVoda"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                </TableRow>
+                            </TableLayout>
+                        </LinearLayout>
+                    </TableRow>
+
+                </TableLayout>
+            </android.support.v7.widget.CardView>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/holo_purple"/>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardStatSvetDen"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                card_view:cardCornerRadius="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp">
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Свет за день"
+                        android:id="@+id/textView20sd"
+                        android:layout_marginBottom="20dp" />
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:adjustViewBounds="true"
+                            android:divider="@drawable/separator"
+                            android:dividerPadding="3dp"
+                            android:orientation="horizontal"
+                            android:showDividers="middle" >
+
+
+                            <TableLayout
+
+                                android:showDividers="middle"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:adjustViewBounds="true"
+                                android:divider="@drawable/separator"
+                                android:dividerPadding="3dp"
+                                >
+
+                                <TableRow
+                                    android:showDividers="middle"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:adjustViewBounds="true"
+                                    android:divider="@drawable/separator"
+                                    android:dividerPadding="3dp">
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/currentDateSvetDen"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxxx"
+                                                android:id="@+id/currentSvetDen"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="73dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/lastDateSvetDen"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxx"
+                                                android:id="@+id/lastSvetDen"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="Расход"
+                                                android:id="@+id/svetDen"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxx"
+                                                android:id="@+id/resSvetDen"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/imageDen"
+                                                android:src="@drawable/ic_keyboard_arrow_up_red_900_36dp"
+                                                android:layout_column="0"
+                                                android:layout_marginTop="-6dp" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxx"
+                                                android:id="@+id/plusSvetDen"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                </TableRow>
+                            </TableLayout>
+                        </LinearLayout>
+                    </TableRow>
+
+                </TableLayout>
+            </android.support.v7.widget.CardView>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/holo_orange_light"/>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardStatSvetNoch"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                card_view:cardCornerRadius="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp">
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Свет за ночь"
+                        android:id="@+id/textViewsn"
+                        android:layout_marginBottom="20dp" />
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:adjustViewBounds="true"
+                            android:divider="@drawable/separator"
+                            android:dividerPadding="3dp"
+                            android:orientation="horizontal"
+                            android:showDividers="middle" >
+
+
+                            <TableLayout
+
+                                android:showDividers="middle"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:adjustViewBounds="true"
+                                android:divider="@drawable/separator"
+                                android:dividerPadding="3dp"
+                                >
+
+                                <TableRow
+                                    android:showDividers="middle"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:adjustViewBounds="true"
+                                    android:divider="@drawable/separator"
+                                    android:dividerPadding="3dp">
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/currentDateSvetNoch"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxxx"
+                                                android:id="@+id/currentSvetNoch"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="73dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/lastDateSvetNoch"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxx"
+                                                android:id="@+id/lastSvetNoch"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="Расход"
+                                                android:id="@+id/svetNoch"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxx"
+                                                android:id="@+id/resSvetNoch"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/imageNoch"
+                                                android:src="@drawable/ic_keyboard_arrow_up_red_900_36dp"
+                                                android:layout_column="0"
+                                                android:layout_marginTop="-6dp" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxx"
+                                                android:id="@+id/plusSvetNoch"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                </TableRow>
+                            </TableLayout>
+                        </LinearLayout>
+                    </TableRow>
+
+                </TableLayout>
+            </android.support.v7.widget.CardView>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/holo_red_dark"/>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardStatResult"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                card_view:cardCornerRadius="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="60dp">
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Оплата"
+                        android:id="@+id/textView20r"
+                        android:layout_marginBottom="20dp" />
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:adjustViewBounds="true"
+                            android:divider="@drawable/separator"
+                            android:dividerPadding="3dp"
+                            android:orientation="horizontal"
+                            android:showDividers="middle" >
+
+
+                            <TableLayout
+
+                                android:showDividers="middle"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:adjustViewBounds="true"
+                                android:divider="@drawable/separator"
+                                android:dividerPadding="3dp"
+                                >
+
+                                <TableRow
+                                    android:showDividers="middle"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:adjustViewBounds="true"
+                                    android:divider="@drawable/separator"
+                                    android:dividerPadding="3dp">
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/currentDateR"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxxx"
+                                                android:id="@+id/currentR"
+                                                android:gravity="center"
+                                                android:layout_marginTop="10dp" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="73dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="DD.yyyy"
+                                                android:id="@+id/lastDateR"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxxx"
+                                                android:id="@+id/lastR"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:id="@+id/rashodR"
+                                                android:gravity="center" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:id="@+id/resR"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                    <TableLayout
+                                        android:layout_width="72dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/imageRes"
+                                                android:src="@drawable/ic_keyboard_arrow_up_red_900_36dp"
+                                                android:layout_column="0"
+                                                android:layout_marginTop="-6dp" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                                android:text="xxx"
+                                                android:id="@+id/plusR"
+                                                android:gravity="center" />
+                                        </TableRow>
+                                    </TableLayout>
+
+                                </TableRow>
+                            </TableLayout>
+                        </LinearLayout>
+                    </TableRow>
+
+                </TableLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
