@@ -27,7 +27,7 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-       mDatabaseHelper3 = new DBHelper(this, "mydb.db", null, 1);
+       mDatabaseHelper3 = new DBHelper(this, "mydb.db", null, DBHelper.DATABASE_VERSION);
         mSqLiteDatabase3 = mDatabaseHelper3.getWritableDatabase();
         /**EditText vgt = (EditText)findViewById(R.id.vgt);
         EditText vht = (EditText)findViewById(R.id.vht);

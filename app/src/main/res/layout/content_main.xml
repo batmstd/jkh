@@ -8,9 +8,7 @@
     tools:context="jkh.com.example.dmitriyoschepkov.jkh.MainActivity"
 
 
-    android:background="#e3e3e3"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp">
+    android:background="#e3e3e3">
 
 
     <ScrollView
@@ -54,8 +52,8 @@
                     android:layout_marginBottom="20dp" />
 
                 <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="fill_parent"
@@ -70,7 +68,7 @@
                         <TableLayout
 
                             android:showDividers="middle"
-                            android:layout_width="fill_parent"
+                            android:layout_width="351dp"
                             android:layout_height="fill_parent"
                             android:adjustViewBounds="true"
                             android:divider="@drawable/separator"
@@ -79,16 +77,16 @@
 
                             <TableRow
                                 android:showDividers="middle"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:adjustViewBounds="true"
                                 android:divider="@drawable/separator"
                                 android:dividerPadding="3dp">
 
                                 <TableLayout
-                                    android:layout_width="72dp"
+                                    android:layout_width="99dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginRight="5dp">
+                                    android:layout_marginRight="2dp">
 
                                     <TableRow
                                         android:layout_width="match_parent"
@@ -98,7 +96,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:text="DD.yyyy"
+                                            android:text="DD.MM.yyyy"
                                             android:id="@+id/currentDateGorVoda"
                                             android:layout_gravity="center_horizontal"
                                             android:gravity="center" />
@@ -120,10 +118,10 @@
                                 </TableLayout>
 
                                 <TableLayout
-                                    android:layout_width="73dp"
+                                    android:layout_width="99dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_marginLeft="5dp">
+                                    android:layout_marginRight="2dp"
+                                    android:layout_marginLeft="2dp">
 
                                     <TableRow
                                         android:layout_width="match_parent"
@@ -156,8 +154,8 @@
                                 <TableLayout
                                     android:layout_width="72dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp">
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp">
 
                                     <TableRow
                                         android:layout_width="match_parent"
@@ -190,7 +188,7 @@
                                 <TableLayout
                                     android:layout_width="72dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp">
+                                    android:layout_marginLeft="2dp">
 
                                     <TableRow
                                         android:layout_width="fill_parent"
@@ -288,9 +286,9 @@
                                     android:dividerPadding="3dp">
 
                                     <TableLayout
-                                        android:layout_width="72dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp">
+                                        android:layout_marginRight="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -321,10 +319,10 @@
                                     </TableLayout>
 
                                     <TableLayout
-                                        android:layout_width="73dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginRight="2dp"
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -357,8 +355,8 @@
                                     <TableLayout
                                         android:layout_width="72dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_marginRight="5dp">
+                                        android:layout_marginLeft="2dp"
+                                        android:layout_marginRight="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -391,7 +389,7 @@
                                     <TableLayout
                                         android:layout_width="72dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -488,9 +486,9 @@
                                     android:dividerPadding="3dp">
 
                                     <TableLayout
-                                        android:layout_width="72dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp">
+                                        android:layout_marginRight="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -521,10 +519,10 @@
                                     </TableLayout>
 
                                     <TableLayout
-                                        android:layout_width="73dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginRight="2dp"
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -557,8 +555,8 @@
                                     <TableLayout
                                         android:layout_width="72dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_marginRight="5dp">
+                                        android:layout_marginLeft="2dp"
+                                        android:layout_marginRight="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -591,7 +589,7 @@
                                     <TableLayout
                                         android:layout_width="72dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -688,9 +686,9 @@
                                     android:dividerPadding="3dp">
 
                                     <TableLayout
-                                        android:layout_width="72dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp">
+                                        android:layout_marginRight="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -721,10 +719,10 @@
                                     </TableLayout>
 
                                     <TableLayout
-                                        android:layout_width="73dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginRight="2dp"
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -757,8 +755,8 @@
                                     <TableLayout
                                         android:layout_width="72dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_marginRight="5dp">
+                                        android:layout_marginLeft="2dp"
+                                        android:layout_marginRight="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -791,7 +789,7 @@
                                     <TableLayout
                                         android:layout_width="72dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -888,9 +886,9 @@
                                     android:dividerPadding="3dp">
 
                                     <TableLayout
-                                        android:layout_width="72dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp">
+                                        android:layout_marginRight="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -921,10 +919,10 @@
                                     </TableLayout>
 
                                     <TableLayout
-                                        android:layout_width="73dp"
+                                        android:layout_width="99dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginRight="5dp"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginRight="2dp"
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"
@@ -957,37 +955,7 @@
                                     <TableLayout
                                         android:layout_width="72dp"
                                         android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_marginRight="5dp">
-
-                                        <TableRow
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:id="@+id/rashodR"
-                                                android:gravity="center" />
-                                        </TableRow>
-
-                                        <TableRow
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:id="@+id/resR"
-                                                android:layout_marginTop="10dp"
-                                                android:gravity="center" />
-                                        </TableRow>
-                                    </TableLayout>
-
-                                    <TableLayout
-                                        android:layout_width="72dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginLeft="5dp">
+                                        android:layout_marginLeft="2dp">
 
                                         <TableRow
                                             android:layout_width="match_parent"

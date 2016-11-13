@@ -69,7 +69,7 @@ public class Main2Activity extends AppCompatActivity {
         asn.setRawInputType(0x00000000);
         asd.setRawInputType(0x00000000);
         ar.setRawInputType(0x00000000);
-        mDatabaseHelper1 = new DBHelper(this, "mydb.db", null, 1);
+        mDatabaseHelper1 = new DBHelper(this, "mydb.db", null, DBHelper.DATABASE_VERSION);
         mSqLiteDatabase1 = mDatabaseHelper1.getWritableDatabase();
         Cursor cursor = mSqLiteDatabase1.query("jkh", new String[] {DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
                 null, null, null, null, null, null);

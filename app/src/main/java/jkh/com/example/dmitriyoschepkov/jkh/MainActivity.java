@@ -1,5 +1,6 @@
 package jkh.com.example.dmitriyoschepkov.jkh;
 
+import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,18 +26,12 @@ import android.widget.TextView;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    //=======================
-    private EditText vg;
-    private EditText vh;
-    private EditText sd;
-    private EditText sn;
-    private TextView result1;
-    public DBHelper mDatabaseHelper;
-    public DBHelper mDBHelper;
-    public SQLiteDatabase mSqLiteDatabase;
+    public DBHelper db;
+    public SQLiteDatabase sql;
     private TextView currentDateGorVoda;
     private TextView lastDateGorVoda;
     private TextView currentGorVoda;
@@ -56,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView currentSvetNoch;
     private TextView lastSvetNoch;
     private TextView resSvetNoch;
-
     private TextView currentDateR;
     private TextView lastDateR;
     private TextView currentR;
     private TextView lastR;
     private TextView resR;
-
+    NotificationManager nm;
     private TextView plusGorVoda, plusHolVoda, plusSvetDen, plusSvetNoch, plusR;
     private ImageView imageGor, imageHol, imageDen, imageNoch, imageRes;
 
@@ -71,13 +66,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDatabaseHelper = new DBHelper(this, "mydb.db", null, 1);
-        mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
-
+        db = new DBHelper(this, "mydb.db", null, DBHelper.DATABASE_VERSION);
+        sql = db.getWritableDatabase();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        startService(new Intent(this, MyService.class));
+
+
+        Calendar c = Calendar.getInstance();
+        Date now = new Date();
+        c.setTime(now);
+        c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
+        System.out.println("nownow" +c);
+
 
         currentDateGorVoda=(TextView) findViewById(R.id.currentDateGorVoda);
         lastDateGorVoda=(TextView)findViewById(R.id.lastDateGorVoda);
@@ -107,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         lastDateR=(TextView)findViewById(R.id.lastDateR);
         currentR=(TextView)findViewById(R.id.currentR);
         lastR=(TextView)findViewById(R.id.lastR);
-        resR=(TextView)findViewById(R.id.resR);
+        //resR=(TextView)findViewById(R.id.resR);
 
         plusGorVoda=(TextView)findViewById(R.id.plusGorVoda);
         plusHolVoda=(TextView)findViewById(R.id.plusHolVoda);
@@ -121,125 +125,137 @@ public class MainActivity extends AppCompatActivity {
         imageNoch = (ImageView)findViewById(R.id.imageNoch);
         imageRes = (ImageView)findViewById(R.id.imageRes);
         Cursor cursor;
-        cursor = mSqLiteDatabase.query("jkh", new String[] {DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
+        cursor = sql.query("jkh", new String[] {DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
                 null, null, null, null, null, null);
-        cursor.moveToLast();
-        double voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
-        double voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
-        double vodootvod = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODOOTVOD_COLUMN));
-        double svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
-        double svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
-        double result = cursor.getDouble(cursor.getColumnIndex(DBHelper.RESULT_COLUMN));
-        double date = cursor.getDouble(cursor.getColumnIndex(DBHelper.DATE_COLUMN));
-        cursor.moveToPrevious();
-        double last_voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
-        double last_voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
-        double last_vodootvod = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODOOTVOD_COLUMN));
-        double last_svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
-        double last_svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
-        double last_result = cursor.getDouble(cursor.getColumnIndex(DBHelper.RESULT_COLUMN));
-        double last_date = cursor.getDouble(cursor.getColumnIndex(DBHelper.DATE_COLUMN));
-        cursor.moveToPrevious();
-        double llast_voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
-        double llast_voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
-        double llast_vodootvod = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODOOTVOD_COLUMN));
-        double llast_svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
-        double llast_svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
-        double llast_result = cursor.getDouble(cursor.getColumnIndex(DBHelper.RESULT_COLUMN));
-        double llast_date = cursor.getDouble(cursor.getColumnIndex(DBHelper.DATE_COLUMN));
-        cursor.close();
-        currentDateGorVoda.setText(""+date);
-        lastDateGorVoda.setText(""+last_date);
-        currentGorVoda.setText(""+voda_gor);
-        lastGorVoda.setText(""+last_voda_gor);
-        Double gorVoda = voda_gor - last_voda_gor;
-        BigDecimal gorVodax = new BigDecimal(gorVoda);
-        gorVodax = gorVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        resGorVoda.setText(""+gorVodax);
+        String count = String.valueOf(cursor.getCount());
+        if (count=="0"){
+            System.out.println("данных нет");
+        }else if (count != "0"){
+            cursor.moveToLast();
+            double voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
+            double voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
+            double vodootvod = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODOOTVOD_COLUMN));
+            double svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
+            double svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
+            double result = cursor.getDouble(cursor.getColumnIndex(DBHelper.RESULT_COLUMN));
+            String date = cursor.getString(cursor.getColumnIndex(DBHelper.DATE_COLUMN));
+            cursor.moveToPrevious();
+            double last_voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
+            double last_voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
+            double last_vodootvod = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODOOTVOD_COLUMN));
+            double last_svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
+            double last_svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
+            double last_result = cursor.getDouble(cursor.getColumnIndex(DBHelper.RESULT_COLUMN));
+            String last_date = cursor.getString(cursor.getColumnIndex(DBHelper.DATE_COLUMN));
+            cursor.moveToPrevious();
+            double llast_voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
+            double llast_voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
+            double llast_vodootvod = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODOOTVOD_COLUMN));
+            double llast_svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
+            double llast_svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
+            double llast_result = cursor.getDouble(cursor.getColumnIndex(DBHelper.RESULT_COLUMN));
+            double llast_date = cursor.getDouble(cursor.getColumnIndex(DBHelper.DATE_COLUMN));
+            cursor.close();
+            currentDateGorVoda.setText("" + date);
+            lastDateGorVoda.setText("" + last_date);
+            currentGorVoda.setText("" + voda_gor);
+            lastGorVoda.setText("" + last_voda_gor);
+            Double gorVoda = voda_gor - last_voda_gor;
+            BigDecimal gorVodax = new BigDecimal(gorVoda);
+            gorVodax = gorVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            resGorVoda.setText("" + gorVodax);
 
-        currentDateHolVoda.setText(""+date);
-        lastDateHolVoda.setText(""+last_date);
-        currentHolVoda.setText(""+voda_hol);
-        lastHolVoda.setText(""+last_voda_hol);
-        Double HolVoda = voda_hol - last_voda_hol;
-        BigDecimal holVodax = new BigDecimal(HolVoda);
-        holVodax = holVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        resHolVoda.setText(""+holVodax);
+            currentDateHolVoda.setText("" + date);
+            System.out.println(date);
+            lastDateHolVoda.setText("" + last_date);
+            currentHolVoda.setText("" + voda_hol);
+            lastHolVoda.setText("" + last_voda_hol);
+            Double HolVoda = voda_hol - last_voda_hol;
+            BigDecimal holVodax = new BigDecimal(HolVoda);
+            holVodax = holVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            resHolVoda.setText("" + holVodax);
 
-        currentDateSvetDen.setText(""+date);
-        lastDateSvetDen.setText(""+last_date);
-        currentSvetDen.setText(""+svet_den);
-        lastSvetDen.setText(""+last_svet_den);
-        Double SvetDen = svet_den - last_svet_den;
-        BigDecimal SvetDenx = new BigDecimal(SvetDen);
-        SvetDenx = SvetDenx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        resSvetDen.setText(""+SvetDenx);
+            currentDateSvetDen.setText("" + date);
+            lastDateSvetDen.setText("" + last_date);
+            currentSvetDen.setText("" + svet_den);
+            lastSvetDen.setText("" + last_svet_den);
+            Double SvetDen = svet_den - last_svet_den;
+            BigDecimal SvetDenx = new BigDecimal(SvetDen);
+            SvetDenx = SvetDenx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            resSvetDen.setText("" + SvetDenx);
 
-        currentDateSvetNoch.setText(""+date);
-        lastDateSvetNoch.setText(""+last_date);
-        currentSvetNoch.setText(""+svet_noch);
-        lastSvetNoch.setText(""+last_svet_noch);
-        Double SvetNoch = svet_noch - last_svet_noch;
-        BigDecimal SvetNochx = new BigDecimal(SvetNoch);
-        SvetNochx = SvetNochx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        resSvetNoch.setText(""+SvetNochx);
+            currentDateSvetNoch.setText("" + date);
+            lastDateSvetNoch.setText("" + last_date);
+            currentSvetNoch.setText("" + svet_noch);
+            lastSvetNoch.setText("" + last_svet_noch);
+            Double SvetNoch = svet_noch - last_svet_noch;
+            BigDecimal SvetNochx = new BigDecimal(SvetNoch);
+            SvetNochx = SvetNochx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            resSvetNoch.setText("" + SvetNochx);
 
-        currentDateR.setText(""+date);
-        lastDateR.setText(""+last_date);
-        currentR.setText(""+result);
-        lastR.setText(""+last_result);
-        Double R = result - last_result;
-        BigDecimal Rx = new BigDecimal(R);
-        Rx = Rx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        plusR.setText(""+Rx);
-        if (result > last_result){imageRes.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);}
-        else {imageRes.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);}
+            currentDateR.setText("" + date);
+            lastDateR.setText("" + last_date);
+            currentR.setText("" + result);
+            lastR.setText("" + last_result);
+            Double R = result - last_result;
+            BigDecimal Rx = new BigDecimal(R);
+            Rx = Rx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            plusR.setText("" + Rx);
+            if (result > last_result) {
+                imageRes.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);
+            } else {
+                imageRes.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);
+            }
 
-        Double lastResGorVoda, resultLastGorVoda;
-        lastResGorVoda = last_voda_gor - llast_voda_gor;
-        resultLastGorVoda = gorVoda - lastResGorVoda;
-        BigDecimal resultLastGorVodax = new BigDecimal(resultLastGorVoda);
-        resultLastGorVodax = resultLastGorVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        plusGorVoda.setText(""+resultLastGorVodax);
-        if (gorVoda > lastResGorVoda){
-        imageGor.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);}
-        else  {
-            imageGor.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);}
+            Double lastResGorVoda, resultLastGorVoda;
+            lastResGorVoda = last_voda_gor - llast_voda_gor;
+            resultLastGorVoda = gorVoda - lastResGorVoda;
+            BigDecimal resultLastGorVodax = new BigDecimal(resultLastGorVoda);
+            resultLastGorVodax = resultLastGorVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            plusGorVoda.setText("" + resultLastGorVodax);
+            if (gorVoda > lastResGorVoda) {
+                imageGor.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);
+            } else {
+                imageGor.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);
+            }
 
-        Double lastResHolVoda, resultLastHolVoda;
-        lastResHolVoda = last_voda_hol - llast_voda_hol;
-        resultLastHolVoda = HolVoda - lastResHolVoda;
-        BigDecimal resultLastHolVodax = new BigDecimal(resultLastHolVoda);
-        resultLastHolVodax = resultLastHolVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        plusHolVoda.setText(""+resultLastHolVodax);
-        if (HolVoda > lastResHolVoda){
-            imageHol.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);}
-        else  {
-            imageHol.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);}
+            Double lastResHolVoda, resultLastHolVoda;
+            lastResHolVoda = last_voda_hol - llast_voda_hol;
+            resultLastHolVoda = HolVoda - lastResHolVoda;
+            BigDecimal resultLastHolVodax = new BigDecimal(resultLastHolVoda);
+            resultLastHolVodax = resultLastHolVodax.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            plusHolVoda.setText("" + resultLastHolVodax);
+            if (HolVoda > lastResHolVoda) {
+                imageHol.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);
+            } else {
+                imageHol.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);
+            }
 
-        Double lastResSvetDen, resultLastSvetDen;
-        lastResSvetDen = last_svet_den - llast_svet_den;
-        resultLastSvetDen = SvetDen - lastResSvetDen;
-        BigDecimal resultLastSvetDenx = new BigDecimal(resultLastSvetDen);
-        resultLastSvetDenx = resultLastSvetDenx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        plusSvetDen.setText(""+resultLastSvetDenx);
-        if (SvetDen > lastResSvetDen){
-            imageDen.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);}
-        else  {
-            imageDen.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);}
+            Double lastResSvetDen, resultLastSvetDen;
+            lastResSvetDen = last_svet_den - llast_svet_den;
+            resultLastSvetDen = SvetDen - lastResSvetDen;
+            BigDecimal resultLastSvetDenx = new BigDecimal(resultLastSvetDen);
+            resultLastSvetDenx = resultLastSvetDenx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            plusSvetDen.setText("" + resultLastSvetDenx);
+            if (SvetDen > lastResSvetDen) {
+                imageDen.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);
+            } else {
+                imageDen.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);
+            }
 
-        Double lastResSvetNoch, resultLastSvetNoch;
-        lastResSvetNoch = last_svet_noch - llast_svet_noch;
-        resultLastSvetNoch = SvetNoch - lastResSvetNoch;
-        BigDecimal resultLastSvetNochx = new BigDecimal(resultLastSvetNoch);
-        resultLastSvetNochx = resultLastSvetNochx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        plusSvetNoch.setText(""+resultLastSvetNochx);
-        if (SvetNoch > lastResSvetNoch){
-            imageNoch.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);}
-        else  {
-            imageNoch.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);}
+            Double lastResSvetNoch, resultLastSvetNoch;
+            lastResSvetNoch = last_svet_noch - llast_svet_noch;
+            resultLastSvetNoch = SvetNoch - lastResSvetNoch;
+            BigDecimal resultLastSvetNochx = new BigDecimal(resultLastSvetNoch);
+            resultLastSvetNochx = resultLastSvetNochx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
+            plusSvetNoch.setText("" + resultLastSvetNochx);
+            if (SvetNoch > lastResSvetNoch) {
+                imageNoch.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_up_red_900_36dp);
+            } else {
+                imageNoch.setImageResource(jkh.com.example.dmitriyoschepkov.jkh.R.drawable.ic_keyboard_arrow_down_green_900_36dp);
+            }
 
-
+        }
 
 
     }
@@ -270,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id==R.id.mail){
             Cursor cursor;
-            cursor = mSqLiteDatabase.query("jkh", new String[] {DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
+            cursor = sql.query("jkh", new String[] {DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
                     null, null, null, null, null, null);
             cursor.moveToLast();
 
@@ -282,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
             double result = cursor.getDouble(cursor.getColumnIndex(DBHelper.RESULT_COLUMN));
             double date = cursor.getDouble(cursor.getColumnIndex(DBHelper.DATE_COLUMN));
             cursor.close();
-            cursor = mSqLiteDatabase.query("tarif", new String[] {DBHelper.VODA_GOR_TARIF_COLUMN, DBHelper.VODA_HOL_TARIF_COLUMN, DBHelper.SVET_DEN_TARIF_COLUMN, DBHelper.SVET_NOCH_TARIF_COLUMN, DBHelper.VODOOTVOD_TARIF_COLUMN},
+            cursor = sql.query("tarif", new String[] {DBHelper.VODA_GOR_TARIF_COLUMN, DBHelper.VODA_HOL_TARIF_COLUMN, DBHelper.SVET_DEN_TARIF_COLUMN, DBHelper.SVET_NOCH_TARIF_COLUMN, DBHelper.VODOOTVOD_TARIF_COLUMN},
                     null, null, null, null, null);
             cursor.moveToPosition(0);
 
@@ -323,6 +339,10 @@ public class MainActivity extends AppCompatActivity {
         else if (id==R.id.archive2){
             Intent intent = new Intent(MainActivity.this, archive.class);
             startActivity(intent);
+        }else if (id==R.id.update){
+            Intent intent_update = getIntent();
+            finish();
+            startActivity(intent_update);
         }
         return super.onOptionsItemSelected(item);
     }

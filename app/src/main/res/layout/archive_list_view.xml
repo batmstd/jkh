@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TwoLineListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:divider="@null"
+    >
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view1"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentEnd="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Дата: "
+                android:id="@+id/textView50"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Оплата: "
+                android:id="@+id/textView49"
+                android:layout_below="@+id/textView50"
+                android:layout_alignLeft="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="date"
+                android:id="@+id/archiveDate"
+                android:layout_alignParentStart="false"
+                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/archiveVodaVodootvod"
+                android:layout_alignTop="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="result"
+                android:id="@+id/archiveResult"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentLeft="false"
+                android:layout_below="@+id/textView50"
+                android:layout_centerHorizontal="true"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_alignLeft="@+id/archiveDate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Вода"
+                android:layout_below="@+id/archiveResult"
+                android:id="@+id/textView37"
+                android:layout_alignLeft="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Горячая: "
+                android:id="@+id/textView38"
+                android:layout_below="@+id/textView37"
+                android:layout_alignParentStart="false"
+                android:layout_alignLeft="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Холодная: "
+                android:id="@+id/textView39"
+                android:layout_below="@+id/textView38"
+                android:layout_alignParentTop="false"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+                android:layout_alignLeft="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Водоотвод: "
+                android:id="@+id/textView40"
+                android:layout_below="@+id/textView39"
+                android:layout_alignLeft="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="archiveVodaGor"
+                android:id="@+id/archiveVodaGor"
+                android:layout_below="@+id/textView37"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_alignParentTop="false"
+                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/archiveResult" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="archiveVodaHol"
+                android:id="@+id/archiveVodaHol"
+                android:layout_below="@+id/archiveVodaGor"
+                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/archiveVodaVodootvod" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="archiveVodaVodootvod"
+                android:id="@+id/archiveVodaVodootvod"
+                android:layout_below="@+id/archiveVodaHol"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/textView40" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Свет"
+                android:id="@+id/textView44"
+                android:layout_below="@+id/textView40"
+                android:layout_alignLeft="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="День: "
+                android:id="@+id/textView45"
+                android:layout_below="@+id/textView44"
+                android:layout_alignLeft="@+id/textView50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Ночь: "
+                android:id="@+id/textView46"
+                android:layout_below="@+id/textView45"
+                android:layout_alignLeft="@+id/textView50"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="archiveDay"
+                android:id="@+id/archiveDay"
+                android:layout_below="@+id/textView44"
+                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/archiveDate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="archiveNight"
+                android:id="@+id/archiveNight"
+                android:layout_below="@+id/archiveDay"
+                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/archiveDate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="руб."
+                android:id="@+id/textView22"
+                android:layout_alignTop="@+id/archiveResult"
+                android:layout_toEndOf="@+id/archiveResult"
+                android:layout_toRightOf="@+id/archiveResult"
+                android:layout_marginLeft="5dp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</TwoLineListItem>

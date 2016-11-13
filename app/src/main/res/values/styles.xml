@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@android:color/holo_red_light</item>
-        <item name="colorPrimaryDark">@android:color/holo_red_dark</item>
-        <item name="colorAccent">@android:color/holo_red_dark</item>
+        <item name="colorPrimary">@android:color/background_dark</item>
+        <item name="colorPrimaryDark">@android:color/background_dark</item>
+        <item name="colorAccent">@android:color/holo_blue_dark</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -18,7 +18,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="павы" parent="Theme.AppCompat.Light.NoActionBar" >
-        <item name="colorAccent">@color/accent_material_light_1</item>
+        <item name="colorAccent">@android:color/background_dark</item>
+    </style>
+
+    <style name="theme" parent="Theme.AppCompat.NoActionBar" >
+        <item name="colorAccent">@android:color/holo_blue_dark</item>
     </style>
 
 </resources>

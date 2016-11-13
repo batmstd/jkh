@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -28,16 +29,16 @@ public class add extends AppCompatActivity {
     private EditText voda_hol_old;
     private EditText svet_den_old;
     private EditText svet_noch_old;
-    public DBHelper mDatabaseHelper;
-    public DBHelper mDBHelper;
-    public SQLiteDatabase mSqLiteDatabase;
+    public DBHelper db;
+    public SQLiteDatabase sql;
+    public final String TAG = "add";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAdd);
-        mDatabaseHelper = new DBHelper(this, "mydb.db", null, 1);
-        mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
+        db = new DBHelper(this, "mydb.db", null, DBHelper.DATABASE_VERSION);
+        sql = db.getWritableDatabase();
         voda_gor_new = (EditText)findViewById(R.id.voda_gor_new);
         voda_hol_new = (EditText)findViewById(R.id.voda_hol_new);
         svet_den_new = (EditText)findViewById(R.id.svet_den_new);
@@ -51,24 +52,32 @@ public class add extends AppCompatActivity {
         svet_den_old.setRawInputType(0x00000000);
         svet_noch_old.setRawInputType(0x00000000);
         Cursor cursor;
-        cursor = mSqLiteDatabase.query("jkh", new String[]{DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
+        cursor = sql.query("jkh", new String[]{DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
                 null, null, null, null, null, null);
-        cursor.moveToLast();
-        double voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
-        double voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
-        double svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
-        double svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
-        cursor.close();
-        voda_hol_old.setText(""+voda_hol);
+        String count = String.valueOf(cursor.getCount());
+        if (count != "0") {
+            cursor.moveToLast();
+            double voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
+            double voda_hol = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_HOL_COLUMN));
+            double svet_noch = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_NOCH_COLUMN));
+            double svet_den = cursor.getDouble(cursor.getColumnIndex(DBHelper.SVET_DEN_COLUMN));
+            cursor.close();
+            voda_hol_old.setText("" + voda_hol);
 
-        voda_gor_old.setText(""+voda_gor);
-        svet_den_old.setText(""+svet_den);
-        svet_noch_old.setText(""+svet_noch);
+            voda_gor_old.setText("" + voda_gor);
+            svet_den_old.setText("" + svet_den);
+            svet_noch_old.setText("" + svet_noch);
+        }else System.out.println("-");
+        Log.d("SQLite", "Database initialized!"); // обычное отладочное сообщение
+        Log.e("SQLite", "Database initialized!"); // сообщение-ошибка
+        Log.i("SQLite", "Database initialized!"); // информационное сообщение
+        Log.v("SQLite", "Database initialized!"); // verbose-сообщение
+        Log.w("SQLite", "Database initialized!"); // warning-сообщение а-ля внимание
     }
     public void onClickAdd(View view){
          //читаем с таблицы последние значения с БД
          Cursor cursor;
-         cursor = mSqLiteDatabase.query("jkh", new String[]{DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
+         cursor = sql.query("jkh", new String[]{DBHelper.VODA_GOR_COLUMN, DBHelper.VODA_HOL_COLUMN, DBHelper.VODOOTVOD_COLUMN, DBHelper.SVET_DEN_COLUMN, DBHelper.SVET_NOCH_COLUMN, DBHelper.RESULT_COLUMN, DBHelper.DATE_COLUMN},
          null, null, null, null, null, null);
          cursor.moveToLast();
          double voda_gor = cursor.getDouble(cursor.getColumnIndex(DBHelper.VODA_GOR_COLUMN));
@@ -91,7 +100,7 @@ public class add extends AppCompatActivity {
          nsd = Double.parseDouble(svet_den_new1);
          //тарифы
 
-         cursor = mSqLiteDatabase.query("tarif", new String[] {DBHelper.VODA_GOR_TARIF_COLUMN, DBHelper.VODA_HOL_TARIF_COLUMN, DBHelper.SVET_DEN_TARIF_COLUMN, DBHelper.SVET_NOCH_TARIF_COLUMN, DBHelper.VODOOTVOD_TARIF_COLUMN},
+         cursor = sql.query("tarif", new String[] {DBHelper.VODA_GOR_TARIF_COLUMN, DBHelper.VODA_HOL_TARIF_COLUMN, DBHelper.SVET_DEN_TARIF_COLUMN, DBHelper.SVET_NOCH_TARIF_COLUMN, DBHelper.VODOOTVOD_TARIF_COLUMN},
          null, null, null, null, null);
          cursor.moveToPosition(0);
 
@@ -108,75 +117,34 @@ public class add extends AppCompatActivity {
          x = (voda+svet);
          BigDecimal z = new BigDecimal(x);
          z = z.setScale(2,BigDecimal.ROUND_HALF_DOWN);
-         //String S = Double.toString(z);
-         //result1.setText(z+" р.");
 
          Date currentDate = new Date();
          SimpleDateFormat dateFormat = null;
-         dateFormat = new SimpleDateFormat("MM.yyyy");
+         dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
+        sql = db.getWritableDatabase();
 
-
-
-        // mDatabaseHelper = new DBHelper(this);
-        mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
-        /**String insertNew = "INSERT INTO 'jkh' (voda_gor, voda_hol, vodootvod, svet_den, svet_noch, result, date) values " +
-                "(" +
-                nvg +
-                ", " +
-                nvh +
-                ", " +
-                rvo +
-                ", " +
-                nsd +
-                ", " +
-                nsn +
-                ", " +
-                x +
-                ", " +
-                dateFormat.format(currentDate) +
-                ");";
-        mSqLiteDatabase.execSQL(insertNew);**/
         String insertQuery = "INSERT INTO 'jkh' (voda_gor, voda_hol, vodootvod, svet_den, svet_noch, result, date) values " +
-                "("+nvg+", "+nvh+", "+rvo+", "+nsd+", "+nsn+", "+x+", "+dateFormat.format(currentDate)+");";
-        mSqLiteDatabase.execSQL(insertQuery);
-
-
-        /** ContentValues values = new ContentValues();
-         values.put(DBHelper.VODA_GOR_COLUMN, nvg);
-         values.put(DBHelper.VODA_HOL_COLUMN, nvh);
-         values.put(DBHelper.VODOOTVOD_COLUMN, rvo);
-         values.put(DBHelper.SVET_NOCH_COLUMN, nsn);
-         values.put(DBHelper.SVET_DEN_COLUMN, nsd);
-         values.put(DBHelper.RESULT_COLUMN, x);
-         values.put(DBHelper.DATE_COLUMN,dateFormat.format(currentDate));
-         mSqLiteDatabase.insert("jkh", null, values);**/
-
+                "("+nvg+", "+nvh+", "+rvo+", "+nsd+", "+nsn+", "+x+", '"+dateFormat.format(currentDate)+"');";
+        sql.execSQL(insertQuery);
+        Log.i(TAG, "Добавлено: ('"+nvg+"', '"+nvh+"', '"+rvo+"', '"+nsn+"', '"+nsd+"', '"+x+"', '"+dateFormat.format(currentDate)+"');");
         BigDecimal resultx = new BigDecimal(x);
         resultx = resultx.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-
-         //TextView complete = (TextView)findViewById(R.id.textView9);
-         //complete.setText("Запись добавлена.");
         AlertDialog.Builder complete = new AlertDialog.Builder(add.this);
         complete.setTitle("Запись добавлена\nСумма к оплате: "+resultx+" p.");
         complete.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Intent intent_update = new Intent(add.this, MainActivity.class);
                 finish();
+                startActivity(intent_update);
             }
         });
         complete.show();
 
          Intent mail = new Intent(Intent.ACTION_SEND);
-         mail.putExtra(Intent.EXTRA_TEXT, "Дата: "+currentDate+"\nВода Горячая: "+nvg+"\nВода Холодная: "+nvh+"\nВодоотвод: "+rvo+"\n\nСвет за ночь: "+nsn+"\nСвеь за день: "+nsd+
-         "\n\nСумма к оплате: "+resultx+"rub."+
-         "\n\nПо тарифам: \nВода горячая "+tarif_vg+
-         "\nВода холодная: "+tarif_vh+
-         "\nВодоотвод: "+tarif_vo+
-         "\nСвет день: "+tarif_sd+
-         "\nСвет ночь: "+tarif_sn
-
-         );
+         mail.putExtra(Intent.EXTRA_TEXT, "Дата: "+dateFormat.format(currentDate)+" Вода Горячая: "+nvg+" Вода Холодная: "+nvh+" Водоотвод: "+rvo+" Свет за ночь: "+nsn+" Свеь за день: "+nsd+
+         " Сумма к оплате: "+resultx+"руб.");
          mail.setType("text/plain");
          startActivity(mail);
 

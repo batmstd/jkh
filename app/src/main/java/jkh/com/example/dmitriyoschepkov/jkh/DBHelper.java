@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
     //name BD
     private static final String DATABASE_NAME = "mydb.db";
     //version
-    private static final int DATABSE_VERSION = 3;
+    public static final int DATABASE_VERSION = 3;
 
 
     //name  table
@@ -59,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
             + " CHAR);";
 
             DBHelper(Context context){
-        super(context, DATABASE_NAME, null, DATABSE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
 
@@ -84,10 +84,10 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
         Log.w("SQLite", "Обновляемся с версии " + oldVersion + " на версию " + newVersion);
 
         // Удаляем старую таблицу и создаём новую
-        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        /*db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE2);
         // Создаём новую таблицу
-        onCreate(db);
+        onCreate(db);*/
     }
     @Override
     public void onDowngrade (SQLiteDatabase db, int oldVersion, int newVersion){
